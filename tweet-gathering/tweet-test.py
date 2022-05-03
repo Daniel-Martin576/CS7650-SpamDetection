@@ -1,8 +1,9 @@
 import tweepy
 
 client = tweepy.Client("AAAAAAAAAAAAAAAAAAAAAC4yJQEAAAAARBS6H3umg2v9qAzC%2FbLCCHVAPQ4%3DUyuUY3g9TUwPeiw53AJFba4RGpqOqBG6zGBJCstWjY9ZiJ4YrN")
-response = client.search_recent_tweets("amber heard -is:retweet -is:quote")
-print(type(response.data))
+response = client.search_recent_tweets("amber heard -is:retweet -is:quote lang:en", until_id = None)
+print(response.meta)
+print(response.meta["oldest_id"])
 
 with open("tweet-output.txt", "w", encoding="utf8") as f:
     for i, data in enumerate(response.data):
